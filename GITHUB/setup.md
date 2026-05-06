@@ -727,19 +727,86 @@ Add-Content -Path $PROFILE -Value "Import-Module posh-git"
 ```
 
 ### 14.2 WSL: Zsh + Oh My Zsh + Powerlevel10k
-
 Per un'esperienza terminale di livello superiore in WSL, molti professionisti passano a Zsh:
-
 ```bash
 sudo apt install -y zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-
 Poi installa Powerlevel10k come tema (mostra branch Git, stato pull/push, durata comandi, virtualenv attivo, ecc.). *Perché:* migliore esperienza visiva, autocompletamento più potente, plugin per Git, Docker, Node, Python integrati.
 
 Optional ma raccomandato per chi passa molto tempo nel terminale.
 
 ---
+
+#### Installare Powerlevel10k
+
+**1. Font — installa MesloLGS NF su Windows**
+
+Powerlevel10k richiede un Nerd Font per visualizzare correttamente le icone e le frecce del prompt. Scarica i 4 file `.ttf` da [github.com/romkatv/powerlevel10k#fonts](https://github.com/romkatv/powerlevel10k#fonts), installali su Windows (doppio click → Installa), poi in **Windows Terminal → Impostazioni → profilo WSL → Aspetto** imposta il font su **MesloLGS NF** e riavvia il terminale.
+
+**2. Clona il tema**
+
+```bash
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+**3. Imposta il tema nel `.zshrc`**
+
+```bash
+nano ~/.zshrc
+```
+
+Cambia la riga del tema in:
+
+```
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+Poi ricarica:
+
+```bash
+source ~/.zshrc
+```
+
+Al primo avvio partirà automaticamente la **wizard di configurazione** guidata.
+
+---
+
+#### Configurazione guidata
+
+La wizard mostra alcune icone di test (es. lucchetto 🔒) tra due frecce per verificare che il font sia installato correttamente:
+
+```
+--->🔒<---
+```
+
+Rispondi **(y)** se l'icona si vede bene, **(n)** se appare come un quadratino □ — in quel caso verifica il font al punto 1.
+
+Le scelte consigliate per un look professionale:
+
+| Opzione | Scelta |
+|---|---|
+| Prompt Style | Classic (2) |
+| Character Set | Unicode (1) |
+| Prompt Color | Light (2) |
+| Show current time? | 24-hour format (2) |
+| Prompt Separators | Angled (1) |
+| Prompt Heads | Sharp (3) |
+| Prompt Tails | Sharp (3) |
+| Prompt Height | one line (1) |
+| Prompt Spacing | Sparse (2) |
+| Icons | Few icons (1) |
+| Prompt Flow | Concise (1) |
+| Transient Prompt | Yes (n) |
+| Instant Prompt | Verbose (1) |
+| Overwrite | Yes (y) |
+
+Per rilanciare la wizard in qualsiasi momento:
+
+```bash
+p10k configure
+```
 
 ## 15. GitHub CLI
 
