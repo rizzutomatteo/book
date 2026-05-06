@@ -726,26 +726,7 @@ Add-Content -Path $PROFILE -Value "Import-Module posh-git"
 . $PROFILE
 ```
 
-### 14.2 WSL: bash completion + prompt utile
-
-Bash su Ubuntu ha già il completamento Git installato. Migliora il prompt con info sul branch corrente. Aggiungi a `~/.bashrc`:
-
-```bash
-# Mostra il branch Git corrente nel prompt
-parse_git_branch() {
-    git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/ (\1)/p'
-}
-
-PS1='\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\[\e[33m\]$(parse_git_branch)\[\e[m\]\$ '
-```
-
-Ricarica:
-
-```bash
-source ~/.bashrc
-```
-
-### 14.3 Alternativa professionale: Zsh + Oh My Zsh + Powerlevel10k
+### 14.2 WSL: Zsh + Oh My Zsh + Powerlevel10k
 
 Per un'esperienza terminale di livello superiore in WSL, molti professionisti passano a Zsh:
 
