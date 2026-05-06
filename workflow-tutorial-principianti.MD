@@ -911,6 +911,17 @@ Apri VS Code, premi `Ctrl+Shift+P` (`Cmd+Shift+P` su Mac), apri le impostazioni 
 }
 ```
 
+Controlla di avere il font "JetBrains Mono" **Impostazioni > Caratteri**, 
+altrimenti scarica il file zip dal [sito ufficiale JetBrains Mono](https://jetbrains.com) 
+estrai, vai in font/tff e installa almeno questi font:
+
+1. **`JetBrainsMono-Regular.ttf`** (Fondamentale)
+2. **`JetBrainsMono-Bold.ttf`**
+3. **`JetBrainsMono-Italic.ttf`**
+
+**Procedura:** Selezionali → Tasto destro → **Installa**. 
+*Nota: Evita le versioni "NL" per mantenere le legature.*
+
 ### Estensioni
 
 Apri il pannello Extensions (`Ctrl+Shift+X`) e installa:
