@@ -869,6 +869,10 @@ Procedura:
 3. Riavvia.
 4. Si installa Ubuntu di default. Configura username e password Linux.
 5. Da quel momento, apri "Ubuntu" da Start e hai un terminale Linux. **Tutta questa guida assume Linux/macOS dentro il terminale.** Se sei su Windows nativo (cmd/PowerShell), molti comandi cambieranno: passa a WSL2.
+6. È buona norma sincronizzare i repository e aggiornare i pacchetti preinstallati:
+   ```
+   sudo apt update && sudo apt upgrade -y
+   ```
 
 Riferimento: https://learn.microsoft.com/en-us/windows/wsl/install
 
