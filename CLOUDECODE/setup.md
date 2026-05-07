@@ -112,10 +112,10 @@ Dovresti vedere `Default Version: 2` e il kernel installato.
 
 Cerca "Ubuntu" nel menu Start e aprilo. Al primo avvio:
 
-1. Ti chiede di creare un **username Linux** (minuscolo, senza spazi, ad esempio `matteo`). Questo è separato dal tuo account Windows.
+1. Ti chiede di creare un **username Linux** (minuscolo, senza spazi, ad esempio `user`). Questo è separato dal tuo account Windows.
 2. Ti chiede una **password Linux**. Questa serve solo per `sudo` dentro Ubuntu — tienila semplice ma memorabile, non viene sincronizzata da nessuna parte.
 
-Dopo qualche secondo sei nella shell Linux: `matteo@DESKTOP-XXX:~$`.
+Dopo qualche secondo sei nella shell Linux: `user@DESKTOP-XXX:~$`.
 
 ### 4.3 Aggiornare il sistema
 
@@ -218,8 +218,8 @@ npm --version     # es. 10.x.x
 Ti identifichi con Git una volta sola, globalmente:
 
 ```bash
-git config --global user.name "Matteo Rizzuto"
-git config --global user.email "matteo.rizzuto@studenti.unicam.it"
+git config --global user.name "Tuo Nome"
+git config --global user.email "Tua Email"
 git config --global init.defaultBranch main
 git config --global pull.rebase false
 git config --global core.editor "code --wait"   # apre VS Code per i commit message
@@ -235,7 +235,7 @@ Le chiavi SSH ti permettono di clonare e pushare verso GitHub senza inserire pas
 Genera una chiave Ed25519 (più moderna e sicura di RSA):
 
 ```bash
-ssh-keygen -t ed25519 -C "matteo.rizzuto@studenti.unicam.it"
+ssh-keygen -t ed25519 -C "Tua Email"
 ```
 
 Premi Enter per accettare il path di default (`~/.ssh/id_ed25519`). La passphrase è opzionale ma consigliata: sblocca la chiave una volta a sessione tramite `ssh-agent`.
