@@ -356,16 +356,50 @@ ssh-add $env:USERPROFILE\.ssh\id_ed25519
 
 Installa `keychain`, che mantiene la chiave caricata tra una shell e l'altra finché non riavvii WSL:
 ```bash
+sudo apt update
 sudo apt install -y keychain
 ```
 Aggiungi in cima al tuo `~/.bashrc` e `~/.zshrc`:
 ```bash
-eval $(keychain --eval --quiet ~/.ssh/id_ed25519)
+eval $(keychain --eval --quiet --agents ssh)
 ```
-Ricarica:
+Configura `~/.ssh/config`:
 ```bash
-source ~/.bashrc
+cat > ~/.ssh/config << 'EOF'
+Host *
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_ed25519
+EOF
+chmod 600 ~/.ssh/config
 ```
+
+Crea il wrapper per la firma dei commit
+```bash
+mkdir -p ~/.local/bin
+cat > ~/.local/bin/ssh-keygen-with-agent << 'EOF'
+#!/bin/sh
+# Carica la chiave nell'agent se non è già presente
+if ! ssh-add -l >/dev/null 2>&1; then
+    ssh-add ~/.ssh/id_ed25519 </dev/tty
+fi
+exec /usr/bin/ssh-keygen "$@"
+EOF
+chmod +x ~/.local/bin/ssh-keygen-with-agent
+```
+
+Configura git
+```bash
+git config --global gpg.ssh.program ~/.local/bin/ssh-keygen-with-agent
+```
+
+Pulizia e test
+```bash
+keychain --clear
+keychain --stop all
+pkill ssh-agent 2>/dev/null
+```
+
+chiudi e riapri, ora dovrebbe chiedere la password solo la prima volta che si fa un commit \ push \ ..
 
 ### 7.3 Aggiungi la chiave pubblica a GitHub
 
