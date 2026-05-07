@@ -213,7 +213,8 @@ node --version    # es. v22.x.x
 npm --version     # es. 10.x.x
 ```
 
-### 5.4 Configurare Git
+### 5.4 Configurare Git 
+> questa è la base per funzionare il vero sutup è a GITHUB\setup.md)
 
 Ti identifichi con Git una volta sola, globalmente:
 
@@ -228,50 +229,8 @@ git config --global color.ui auto
 
 > Nota su `user.email`: se contribuisci a progetti pubblici e vuoi proteggere la tua mail, usa l'indirizzo "no-reply" che GitHub ti fornisce in `Settings → Emails` (`12345+username@users.noreply.github.com`).
 
-### 5.5 Chiavi SSH per GitHub
 
-Le chiavi SSH ti permettono di clonare e pushare verso GitHub senza inserire password ogni volta, ed è il metodo standard professionale.
-
-Genera una chiave Ed25519 (più moderna e sicura di RSA):
-
-```bash
-ssh-keygen -t ed25519 -C "matteo.rizzuto@studenti.unicam.it"
-```
-
-Premi Enter per accettare il path di default (`~/.ssh/id_ed25519`). La passphrase è opzionale ma consigliata: sblocca la chiave una volta a sessione tramite `ssh-agent`.
-
-Avvia l'agent e aggiungi la chiave:
-
-```bash
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-```
-
-Stampa la chiave pubblica e copiala:
-
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
-
-Vai su [github.com/settings/keys](https://github.com/settings/keys) → **New SSH key** → incolla. Testa con:
-
-```bash
-ssh -T git@github.com
-```
-
-Dovresti vedere: `Hi <username>! You've successfully authenticated...`.
-
-Per non riavviare l'agent ogni volta, aggiungi in fondo a `~/.zshrc` (o `~/.bashrc`):
-
-```bash
-# Avvia ssh-agent solo se non già attivo
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    eval "$(ssh-agent -s)" > /dev/null
-fi
-ssh-add -q ~/.ssh/id_ed25519 2>/dev/null
-```
-
-### 5.6 Toolchain per più linguaggi (panoramica generica)
+### 5.5 Toolchain per più linguaggi (panoramica generica)
 
 Setup minimo per coprire i linguaggi più comuni in modo pulito:
 
