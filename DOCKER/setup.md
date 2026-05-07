@@ -489,6 +489,9 @@ Configurazione consigliata come **default sicuro per principianti e intermedi**:
   ],
   "live-restore": true,
   "no-new-privileges": true,
+  "default-ulimits": {
+    "nofile": { "Name": "nofile", "Hard": 65536, "Soft": 65536 }
+  }, 
   "features": {
     "buildkit": true
   },
