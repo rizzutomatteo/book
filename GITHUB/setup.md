@@ -358,7 +358,7 @@ Installa `keychain`, che mantiene la chiave caricata tra una shell e l'altra fin
 ```bash
 sudo apt install -y keychain
 ```
-Aggiungi al tuo `~/.bashrc` (o `~/.zshrc`):
+Aggiungi in cima al tuo `~/.bashrc` e `~/.zshrc`:
 ```bash
 eval $(keychain --eval --quiet ~/.ssh/id_ed25519)
 ```
