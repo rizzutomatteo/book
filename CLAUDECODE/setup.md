@@ -355,23 +355,25 @@ Ecco un punto di partenza serio per uso da programmatore:
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "model": "claude-sonnet-4-6",
-  "theme": "dark",
-  "editor": {
-    "command": "code",
-    "args": ["--wait"]
-  },
+  "includeCoAuthoredBy": false,
+  "cleanupPeriodDays": 30,
   "env": {
     "EDITOR": "code --wait",
-    "PAGER": "less"
+    "PAGER": "less",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
   "permissions": {
+    "defaultMode": "default",
     "allow": [
       "Bash(git status)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git switch:*)",
+      "Bash(git checkout:*)",
       "Bash(npm test:*)",
-      "Bash(npm run *)",
+      "Bash(npm run:*)",
       "Bash(pytest:*)",
       "Bash(go test:*)",
       "Bash(cargo test:*)",
@@ -380,26 +382,29 @@ Ecco un punto di partenza serio per uso da programmatore:
       "Bash(cat:*)",
       "Bash(head:*)",
       "Bash(tail:*)",
-      "Read(./**)",
-      "Edit(./**)"
+      "Bash(find:*)"
     ],
     "deny": [
-      "Bash(rm -rf /*)",
       "Bash(sudo:*)",
-      "Bash(curl:* | sh)",
-      "Bash(wget:* | sh)",
       "Bash(git push --force:*)",
-      "Bash(git reset --hard:*)"
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/id_rsa)",
+      "Read(./**/id_ed25519)"
     ],
     "ask": [
+      "Bash(rm:*)",
       "Bash(git push:*)",
       "Bash(git commit:*)",
+      "Bash(git rebase:*)",
       "Bash(npm publish:*)",
-      "Write(/etc/**)",
-      "Write(~/**)"
+      "Bash(npm install:*)",
+      "Bash(pip install:*)"
     ]
-  },
-  "telemetry": false
+  }
 }
 ```
 
