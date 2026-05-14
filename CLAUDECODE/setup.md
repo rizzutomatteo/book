@@ -27,7 +27,8 @@
 18. [Best practices e sicurezza](#18-best-practices-e-sicurezza)
 19. [Costi, limiti e modelli](#19-costi-limiti-e-modelli)
 20. [Troubleshooting](#20-troubleshooting)
-21. [Checklist finale del setup professionale](#21-checklist-finale-del-setup-professionale)
+21. [aggiunngere barra con info](#21-aggiungere-barra-con-info)
+22. [Checklist finale del setup professionale](#22-checklist-finale-del-setup-professionale)
 
 ---
 
@@ -1075,7 +1076,14 @@ claude   # ti chiede di rifare login
 
 (Non rimuove `settings.json`, `CLAUDE.md`, agents, commands, skills — quelli restano.)
 
-## 21. Checklist finale del setup professionale
+## 21. Aggiungere barra con info
+
+scrivi a claude nella cartella principale: 
+```
+attiva la status line seguendo questa documentazione: https://code.claude.com/docs/en/statusline inserisci github repo, branch, parra visuale del context con percentuale e utilizza tutti colori diversi
+```
+
+## 22. Checklist finale del setup professionale
 
 Quando hai completato la guida, dovresti avere:
 
